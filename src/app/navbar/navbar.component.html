@@ -25,6 +25,23 @@
       </button>
       <span>heros</span>
     </mat-toolbar>
+    <mat-card *ngFor="let hero of heroes">
+        <mat-card-header>
+            <mat-card-title>{{hero.name}}</mat-card-title>
+            <mat-card-subtitle>{{hero.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <img matCardImage [src]="getUrlImg(hero)">
+        <mat-card-content>
+            Text content
+        </mat-card-content>
+        <mat-card-actions align="start">
+            <button mat-button (click)="onAction1">Action1</button>
+            
+        </mat-card-actions>
+        <mat-card-footer>
+            Footer
+        </mat-card-footer>
+    </mat-card>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

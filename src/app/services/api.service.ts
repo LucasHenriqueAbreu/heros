@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
 	/**
-	 * Pesquisa as filiais par uma empresa do usuário logado.
+	 * Pesquisa todos os itens.
 	 */
   findAll(): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}characters?apikey=${this.apiKey}`);

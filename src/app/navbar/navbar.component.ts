@@ -11,6 +11,8 @@ import { ApiService } from '../services/api.service';
 })
 export class NavbarComponent implements OnInit {
 
+  heroes: any[] = [];
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -22,7 +24,10 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apiService.findAll().subscribe(res => console.log(res), err => console.log(err));
+    this.apiService.findAll().subscribe(res => this.heroes = res.data.results, err => console.log(err));
   }
 
+  getUrlImg(hero: any) {
+    return `${hero.thumbnail.path}/standard_amazing.${hero.thumbnail.extension}`;
+  }
 }
