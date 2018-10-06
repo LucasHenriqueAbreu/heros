@@ -1,12 +1,14 @@
-<header #page-header>
-  <div #header-picture style="background-image:url(http://www.shortday.in/wp-content/uploads/2015/06/Katy-Perry-wallpaper.jpg)"></div>
-  <mat-toolbar scroll color="primary">
+<header #pageheader class="pageheader">
+  <div #headerpicture class="headerpicture" style="background-image:url(http://www.shortday.in/wp-content/uploads/2015/06/Katy-Perry-wallpaper.jpg)"></div>
+  <mat-toolbar #toolbar class="scroll" color="primary" fxLayout="row" fxLayoutAlign="start">
+    <div fxFlex class="toolbar-tools">
       <button mat-icon-button><mat-icon>arrow_back</mat-icon></button>
-      <h2 mat-header-title fxFlex>Teste</h2>
+      <span #headertitle fxFlex>Teste</span>
       <button mat-icon-button><mat-icon>create</mat-icon></button>
       <button mat-icon-button><mat-icon>more_vert</mat-icon></button>
+    </div>
   </mat-toolbar>
-  <div class="main-fab">
+  <div #mainfab class="main-fab">
     <!-- <button mat-icon-button><mat-icon>star</mat-icon></button> -->
     <button mat-fab><mat-icon>star</mat-icon></button>
   </div>

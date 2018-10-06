@@ -1,0 +1,7 @@
+<mat-card *ngFor="let hero of heroes">
+    <mat-card-header>
+        <mat-card-title>{{hero.name}}</mat-card-title>
+        <mat-card-subtitle>{{hero.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <img matCardImage [src]="getUrlImg(hero)">
+</mat-card>

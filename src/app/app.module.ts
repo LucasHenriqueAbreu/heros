@@ -13,11 +13,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { DetailsComponent } from './details/details.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ApiService } from './services/api.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ScrollDirective } from './directives/scroll.directive';
+import { NavbarComponent } from './laytouts/navbar/navbar.component';
+import { DetailsComponent } from './views/details/details.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { ROUTES } from './app.routes';
+import { BlankComponent } from './laytouts/blank/blank.component';
+import { HomeComponent } from './views/home/home.component';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { ScrollDirective } from './directives/scroll.directive';
     AppComponent,
     NavbarComponent,
     DetailsComponent,
-    ScrollDirective
+    PageNotFoundComponent,
+    BlankComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,
@@ -39,7 +44,9 @@ import { ScrollDirective } from './directives/scroll.directive';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+
+    ROUTES
   ],
   providers: [
     ApiService
