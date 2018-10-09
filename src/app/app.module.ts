@@ -8,6 +8,7 @@ import {
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatDividerModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +24,7 @@ import { BlankComponent } from './laytouts/blank/blank.component';
 import { HomeComponent } from './views/home/home.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { FavoritesComponent } from './views/favorites/favorites.component';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { environment } from '../environments/environment';
     DetailsComponent,
     PageNotFoundComponent,
     BlankComponent,
-    HomeComponent
+    HomeComponent,
+    FavoritesComponent
   ],
   imports: [
     HttpClientModule,
@@ -47,6 +50,7 @@ import { environment } from '../environments/environment';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDividerModule,
 
     ROUTES,
 
