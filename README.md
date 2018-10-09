@@ -2,7 +2,7 @@
 
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 6.1.2.
 
-Para ter em sua máquina clone o projeto e instale as dependências:
+Para ter em sua máquina, clone o projeto e instale as dependências:
 ```bash
 git clone https://github.com/LucasHenriqueAbreu/heros.git
 cd heros
