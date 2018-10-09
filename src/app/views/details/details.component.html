@@ -36,8 +36,23 @@
         <mat-card-subtitle>{{character.description}}</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
-
-    <mat-card>
+    <section fxLayout="column">
+      <p class="title-section">Comics</p>
+      <div fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+        <mat-card fxFlex="25%" *ngFor="let comic of comics">
+          <img matCardImage [src]="getUrlImg(comic.thumbnail)">
+          <mat-card-header>
+            <mat-card-title>{{comic.title}}</mat-card-title>
+            <mat-card-subtitle>{{comic.description}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+            <button mat-button color="accent" (click)="openDetails(comic)">Details</button>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+      <button mat-button color="accent" (click)="onClick">Load more</button>
+    </section>
+    <!-- <mat-card>
       <mat-card-header>
         <mat-card-title>Comics</mat-card-title>
         <mat-card-subtitle>{{character.name}} has {{character.comics.returned}} comics</mat-card-subtitle>
@@ -48,7 +63,7 @@
           <img [src]="comic.resourceURI">
         </div>
       </mat-card-content>
-    </mat-card>
+    </mat-card> -->
 
     <!-- <mat-card>
           <mat-card-header>

@@ -8,6 +8,8 @@ import {
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
+  MatDialog,
+  MatDialogModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +23,7 @@ import { ROUTES } from './app.routes';
 import { HomeComponent } from './views/home/home.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { BlankComponent } from './layout/blank/blank.component';
+import { DetailsComicComponent } from './views/details/details-comic/details-comic.component';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { BlankComponent } from './layout/blank/blank.component';
     DetailsComponent,
     PageNotFoundComponent,
     BlankComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComicComponent
   ],
   imports: [
     HttpClientModule,
@@ -45,11 +49,16 @@ import { BlankComponent } from './layout/blank/blank.component';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDialogModule,
 
     ROUTES
   ],
+  entryComponents: [
+    DetailsComicComponent
+  ],
   providers: [
-    ApiService
+    ApiService,
+    MatDialog
   ],
   bootstrap: [AppComponent]
 })

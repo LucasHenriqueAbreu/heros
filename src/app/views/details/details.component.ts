@@ -1,8 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2, HostListener, Input } from '@angular/core';
-import { MatToolbar } from '@angular/material';
+import { MatToolbar, MatDialog } from '@angular/material';
 import { Character } from '../../models/character';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { Image } from '../../models/image';
+import { Comic } from '../../models/comic';
+import { DetailsComicComponent } from './details-comic/details-comic.component';
 
 @Component({
   selector: 'app-details',
@@ -12,6 +15,7 @@ import { ApiService } from '../../services/api.service';
 export class DetailsComponent implements OnInit {
 
   character: Character = new Character();
+  comics: Comic[] = [];
   pathImg: string = '';
 
   /* header DOM element with md-page-header attribute */
@@ -41,12 +45,14 @@ export class DetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    public dialog: MatDialog,
+    
   ) { }
 
   ngOnInit(): void {
     this.baseDimensions = this.header.nativeElement.getBoundingClientRect();
-    this.getCharacter(this.route.snapshot.paramMap.get('id'));
+    this.getCharacterData(this.route.snapshot.paramMap.get('id'));
     this.styleInit();
     this.handleStyle(this.baseDimensions);
   }
@@ -55,11 +61,15 @@ export class DetailsComponent implements OnInit {
    * Busca na API um character por id
    * @param id 
    */
-  getCharacter(id: string): void {
+  getCharacterData(id: string): void {
     this.apiService.findById(id).subscribe(res => {
       this.character = res.data.results[0];
-      this.pathImg = this.getUrlImg(this.character);
+      this.pathImg = this.getUrlImg(this.character.thumbnail);
     }, err => { console.log(err) });
+
+    this.apiService.getComics(id).subscribe(res => {
+      this.comics = res.data.results;
+    })
   }
 
   /**
@@ -125,8 +135,19 @@ export class DetailsComponent implements OnInit {
    * Cria uma url para renderizar a imagem do character
    * @param character 
    */
-  getUrlImg(character: Character): string {
-    return `${character.thumbnail.path}.${character.thumbnail.extension}`;
+  getUrlImg(thumbnail: Image): string {
+    return `${thumbnail.path}.${thumbnail.extension}`;
+  }
+
+  /**
+   * Abre o modal com mais detalhes sobre o comic.
+   * @param comic 
+   */
+  openDetails(comic: Comic) {
+    this.dialog.open(DetailsComicComponent, {
+      panelClass: 'full-screen-modal',
+      data: comic
+		});
   }
 
 }

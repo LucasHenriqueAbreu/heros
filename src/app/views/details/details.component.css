@@ -36,6 +36,7 @@ section {
 
 .content {
   padding: 5px;
+  margin-top: -50px;
 }
 
 .toolbar-tools {
@@ -50,4 +51,11 @@ mat-card {
   color: rgba(0,0,0,.54);
   padding: 0 20px;
   background-color: #fff;
+}
+
+.title-section {
+  color: #757575;
+  font-size: 1.2em;
+  margin-left: 10px;
+
 }
