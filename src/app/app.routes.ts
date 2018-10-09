@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { HomeComponent } from './views/home/home.component';
 import { BlankComponent } from './layout/blank/blank.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { FavoritesComponent } from './views/favorites/favorites.component';
 
 const routes: Routes = [
     // Main redirect
@@ -27,6 +28,10 @@ const routes: Routes = [
             {
                 path: 'details/:id',
                 component: DetailsComponent
+            },
+            {
+                path: 'favorites',
+                component: FavoritesComponent
             }
         ]
     },

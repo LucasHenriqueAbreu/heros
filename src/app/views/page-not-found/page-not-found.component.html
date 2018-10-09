@@ -1,3 +1,10 @@
-<p>
-  page-not-found works!
-</p>
+<div fxFlex fxLayout="column" fxLayoutAlign="center center" id="error-404">
+  <div class="content" fxlayout="column">
+      <div class="error-code">404</div>
+      <div class="message">Desculpe mas nós não conseguimos encontrar a páginha que você está procurando</div>
+
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+          <button mat-button color="primary" (click)="backHome()">Voltar ao home</button>
+      </div>
+  </div>
+</div>

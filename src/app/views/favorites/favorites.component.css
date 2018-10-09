@@ -1,0 +1,14 @@
+.card-favorites {
+    padding: 0px;
+}
+.card-favorites img {
+    height: 200px;
+    width: 200px;
+}
+.card-content {
+    padding: 10px 14px 0;
+}
+
+.card-actions {
+    padding: 8px 0;
+}

@@ -10,6 +10,7 @@ import {
   MatToolbarModule,
   MatDialog,
   MatDialogModule,
+  MatDividerModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +25,9 @@ import { HomeComponent } from './views/home/home.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { BlankComponent } from './layout/blank/blank.component';
 import { DetailsComicComponent } from './views/details/details-comic/details-comic.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { FavoritesComponent } from './views/favorites/favorites.component';
 
 
 @NgModule({
@@ -34,7 +38,8 @@ import { DetailsComicComponent } from './views/details/details-comic/details-com
     PageNotFoundComponent,
     BlankComponent,
     HomeComponent,
-    DetailsComicComponent
+    DetailsComicComponent,
+    FavoritesComponent
   ],
   imports: [
     HttpClientModule,
@@ -50,8 +55,11 @@ import { DetailsComicComponent } from './views/details/details-comic/details-com
     MatListModule,
     MatCardModule,
     MatDialogModule,
+    MatDividerModule,
 
-    ROUTES
+    ROUTES,
+
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
     DetailsComicComponent
