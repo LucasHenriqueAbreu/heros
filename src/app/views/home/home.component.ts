@@ -31,4 +31,8 @@ export class HomeComponent implements OnInit {
   showDetail(character: Character) {
     this.router.navigate(['details', character.id]);
   }
+
+  searchCharacter(query: string) {
+    console.log(query);
+  }
 }
