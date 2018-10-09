@@ -6,6 +6,7 @@ import { ApiService } from '../../services/api.service';
 import { Image } from '../../models/image';
 import { Comic } from '../../models/comic';
 import { DetailsComicComponent } from './details-comic/details-comic.component';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-details',
@@ -47,6 +48,7 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     public dialog: MatDialog,
+    public localStorageService: LocalStorageService
     
   ) { }
 
@@ -148,6 +150,14 @@ export class DetailsComponent implements OnInit {
       panelClass: 'full-screen-modal',
       data: comic
 		});
+  }
+
+  /**
+   * Salva na localStorage os heróis favoritos.
+   * @param character 
+   */
+  makeBookmark(character: Character) {
+    this.localStorageService.create(character);
   }
 
 }

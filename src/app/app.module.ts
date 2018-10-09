@@ -11,6 +11,7 @@ import {
   MatDialog,
   MatDialogModule,
   MatDividerModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +29,7 @@ import { DetailsComicComponent } from './views/details/details-comic/details-com
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FavoritesComponent } from './views/favorites/favorites.component';
+import { LocalStorageService } from './services/local-storage.service';
 
 
 @NgModule({
@@ -56,6 +58,7 @@ import { FavoritesComponent } from './views/favorites/favorites.component';
     MatCardModule,
     MatDialogModule,
     MatDividerModule,
+    MatTooltipModule,
 
     ROUTES,
 
@@ -66,7 +69,8 @@ import { FavoritesComponent } from './views/favorites/favorites.component';
   ],
   providers: [
     ApiService,
-    MatDialog
+    MatDialog,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

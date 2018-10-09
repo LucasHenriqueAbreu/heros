@@ -16,7 +16,7 @@
   </mat-toolbar>
   <div #mainfab class="main-fab">
     <!-- <button mat-icon-button><mat-icon>star</mat-icon></button> -->
-    <button mat-fab>
+    <button matTooltip="Make bookmark" mat-fab (cick)="makeBookmark(character)">
       <mat-icon>star</mat-icon>
     </button>
   </div>

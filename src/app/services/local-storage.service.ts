@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Character } from '../models/character';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
 
-  characters: any[] = [];
+  characters: Character[] = [];
 
   constructor() { }
 
   /**
    * Retorna todos os characters salvos na localstorage
    */
-  getAll() {
+  getAll(): Character[] {
     if(localStorage.getItem('characters') === null) {
       this.characters = [];
     } else {
@@ -25,7 +26,7 @@ export class LocalStorageService {
    * Salva um novo charaacter na localstorage
    * @param character 
    */
-  create(character: any) {
+  create(character: Character) {
     this.characters.push(character);
     let characters = [];
     if(localStorage.getItem('characters') === null) {
@@ -43,7 +44,7 @@ export class LocalStorageService {
    * Remove um character da localstorage.
    * @param character 
    */
-  delete(character: any) {
+  delete(character: Character) {
     for (let i = 0; i < this.characters.length; i++) {
       if (character.id == this.characters[i].id) {
         this.characters.splice(i, 1);

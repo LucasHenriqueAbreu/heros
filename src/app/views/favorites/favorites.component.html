@@ -1,42 +1,16 @@
 <div style="padding: 50px;">
-  <mat-card fxLayout="row" class="card-favorites">
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card fxLayout="row" class="card-favorites"  class="card-characters" fxFlex="25%" *ngFor="let character of characters">
+    <img [src]="getUrlImg(character)">
     <div fxFlex fxLayout="column">
       <div class="card-content">
-        <mat-card-title>Title</mat-card-title>
-        <mat-card-subtitle>The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-          Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.</mat-card-subtitle>
+        <mat-card-title>{{character.name}}</mat-card-title>
+        <mat-card-subtitle>{{character.description}}</mat-card-subtitle>
       </div>
       <mat-divider style="position: relative;"></mat-divider>
       <div class="card-actions" fxLayout="row" fxLayoutAlign="end center">
-        <button mat-button color="warn">DELETE</button>
-        <button mat-button color="primary">DETAILS</button>
+        <button mat-button color="warn" (click)="delete(character)">DELETE</button>
+        <button mat-button color="primary" (click)="showDetail(character)">DETAILS</button>
       </div>
     </div>
   </mat-card>
 </div>
-
-<!-- 
-  The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-          Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting
-  <mat-card>
-  <mat-card-header>
-    <mat-card-title>Title</mat-card-title>
-    <mat-card-subtitle>Subtitle</mat-card-subtitle>
-  </mat-card-header>
-  <img matCardImage src="Card wide image source">
-  <mat-card-content>
-    Text content
-  </mat-card-content>
-  <mat-card-actions align="start">
-    <button mat-button (click)="onAction1">Action1</button>
-
-  </mat-card-actions>
-  <mat-card-footer>
-    Footer
-  </mat-card-footer>
-</mat-card> -->
