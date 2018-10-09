@@ -19,27 +19,17 @@ export class DetailsComponent implements OnInit {
   comics: Comic[] = [];
   pathImg: string = '';
 
-  /* header DOM element with md-page-header attribute */
-  @ViewChild('pageheader') header: ElementRef;
-  /* Store header dimensions to initialize header styling */
-  baseDimensions: any //this.header.getBoundingClientRect();
-  /* DOM element with md-header-title attribute (title in toolbar) */
+  @ViewChild('pageheader') header: ElementRef;  
   @ViewChild('headertitle') title: ElementRef;
-  /* DOM element with md-header-picture attribute (picture in header) */
   @ViewChild('headerpicture') picture: ElementRef;
-  /* DOM element with main-fab class (a DOM element which contains the main float action button element) */
   @ViewChild('mainfab') fab: ElementRef;
-  /*Elemento do DOM que representa o toolbar */
   @ViewChild('toolbar') toolbar: MatToolbar;
-  /* The height of a toolbar by default in Angular Material */
+  
+  baseDimensions: any
   legacyToolbarH = 64;
-  /* The mid-height of a float action button by default in Angular Material */
   legacyFabMid = 56 / 2;
-  /* The zoom scale of the toolbar title when it's placed at the bottom of the header picture */
   titleZoom = 1.5;
-  /* The primary color palette used by Angular Material */
   primaryColor = [63, 81, 181];
-
   showMainFab = true;
 
 
@@ -49,7 +39,7 @@ export class DetailsComponent implements OnInit {
     private apiService: ApiService,
     public dialog: MatDialog,
     public localStorageService: LocalStorageService
-    
+
   ) { }
 
   ngOnInit(): void {
@@ -113,22 +103,40 @@ export class DetailsComponent implements OnInit {
   }
 
 
+  /**
+   * Listener para o evento de resize da tela. Quando o resize é realizado pelo usuário 
+   * realiza o recalculo dos styles da tela.
+   * @param event 
+   */
   @HostListener("window:resize", ["$event"])
   resize(event: UIEvent): void {
     this.baseDimensions = this.header.nativeElement.getBoundingClientRect();
     this.handleStyle(this.baseDimensions);
   }
 
+  /**
+   * Listener para o evento de scroll da tela. Quando o scroll é realizado pelo usuário 
+   * realiza o recalculo dos styles da tela.
+   * @param event 
+   */
   @HostListener("window:scroll", ["$event"])
   scroll(event: UIEvent): void {
     let dimensions = this.header.nativeElement.getBoundingClientRect();
     this.handleStyle(dimensions);
   }
 
+  /**
+   * Valida se o elemento possui uma determinada classe css
+   * @param element 
+   * @param _class 
+   */
   hasClass(element: ElementRef, _class: string): boolean {
     return element.nativeElement.classList.contains(_class);
   }
 
+  /**
+   * Redireciona para o home
+   */
   back() {
     this.router.navigate(['home']);
   }
@@ -149,7 +157,7 @@ export class DetailsComponent implements OnInit {
     this.dialog.open(DetailsComicComponent, {
       panelClass: 'full-screen-modal',
       data: comic
-		});
+    });
   }
 
   /**

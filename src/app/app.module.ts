@@ -30,6 +30,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { LocalStorageService } from './services/local-storage.service';
+import { InputSearchModule } from './layout/input-search/input-search.module';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { LocalStorageService } from './services/local-storage.service';
     MatDialogModule,
     MatDividerModule,
     MatTooltipModule,
+    InputSearchModule,
 
     ROUTES,
 

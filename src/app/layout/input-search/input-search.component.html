@@ -1,0 +1,9 @@
+<mat-card class="search-container" fxLayout="row">
+	<input matInput type="text" id="search-bar" autocomplete="off" [placeholder]="placeholder" required name="query" (keyup)="searchControlTime(query)"
+	 [(ngModel)]="query">
+	<!-- <input matInput id="search-bar" autocomplete="off" [placeholder]="placeholder" [(ngModel)]="query"> -->
+	<span fxFlex></span>
+	<button class="search-icon" mat-icon-button matTooltip="Pesquisar" (click)="actionsearch(query)">
+		<mat-icon class="mat-24" aria-label="Sair">search</mat-icon>
+	</button>
+</mat-card>
