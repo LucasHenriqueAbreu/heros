@@ -21,6 +21,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { ROUTES } from './app.routes';
 import { BlankComponent } from './laytouts/blank/blank.component';
 import { HomeComponent } from './views/home/home.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { HomeComponent } from './views/home/home.component';
     MatListModule,
     MatCardModule,
 
-    ROUTES
+    ROUTES,
+
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     ApiService

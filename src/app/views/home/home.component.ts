@@ -19,6 +19,6 @@ export class HomeComponent implements OnInit {
   }
 
   getUrlImg(hero: any) {
-    return `${hero.thumbnail.path}/standard_amazing.${hero.thumbnail.extension}`;
+    return `${hero.thumbnail.path}.${hero.thumbnail.extension}`;
   }
 }
