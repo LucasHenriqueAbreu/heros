@@ -1,11 +1,11 @@
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NavbarComponent } from './laytouts/navbar/navbar.component';
 import { DetailsComponent } from './views/details/details.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
-import { BlankComponent } from './laytouts/blank/blank.component';
 import { HomeComponent } from './views/home/home.component';
+import { BlankComponent } from './layout/blank/blank.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 const routes: Routes = [
     // Main redirect
@@ -25,7 +25,7 @@ const routes: Routes = [
         path: '', component: BlankComponent,
         children: [
             {
-                path: 'details',
+                path: 'details/:id',
                 component: DetailsComponent
             }
         ]

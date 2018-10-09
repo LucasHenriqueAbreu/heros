@@ -1,5 +1,8 @@
-import { Component, OnInit, ElementRef, ViewChild, Renderer2, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer2, HostListener, Input } from '@angular/core';
 import { MatToolbar } from '@angular/material';
+import { Character } from '../../models/character';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-details',
@@ -7,6 +10,9 @@ import { MatToolbar } from '@angular/material';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+
+  character: Character = new Character();
+  pathImg: string = '';
 
   /* header DOM element with md-page-header attribute */
   @ViewChild('pageheader') header: ElementRef;
@@ -32,15 +38,33 @@ export class DetailsComponent implements OnInit {
   showMainFab = true;
 
 
-  constructor(private renderer: Renderer2) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
     this.baseDimensions = this.header.nativeElement.getBoundingClientRect();
+    this.getCharacter(this.route.snapshot.paramMap.get('id'));
     this.styleInit();
     this.handleStyle(this.baseDimensions);
   }
 
+  /**
+   * Busca na API um character por id
+   * @param id 
+   */
+  getCharacter(id: string): void {
+    this.apiService.findById(id).subscribe(res => {
+      this.character = res.data.results[0];
+      this.pathImg = this.getUrlImg(this.character);
+    }, err => { console.log(err) });
+  }
 
+  /**
+   * Seta o style inicial para o titulo (nome do character)
+   */
   styleInit(): void {
     this.title.nativeElement.style.paddingLeft = '16px';
     this.title.nativeElement.style.position = 'relative';
@@ -91,6 +115,18 @@ export class DetailsComponent implements OnInit {
 
   hasClass(element: ElementRef, _class: string): boolean {
     return element.nativeElement.classList.contains(_class);
+  }
+
+  back() {
+    this.router.navigate(['home']);
+  }
+
+  /**
+   * Cria uma url para renderizar a imagem do character
+   * @param character 
+   */
+  getUrlImg(character: Character): string {
+    return `${character.thumbnail.path}.${character.thumbnail.extension}`;
   }
 
 }

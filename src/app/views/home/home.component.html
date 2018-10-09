@@ -1,7 +1,9 @@
-<mat-card *ngFor="let hero of heroes">
-    <mat-card-header>
-        <mat-card-title>{{hero.name}}</mat-card-title>
-        <mat-card-subtitle>{{hero.description}}</mat-card-subtitle>
-    </mat-card-header>
-    <img matCardImage [src]="getUrlImg(hero)">
-</mat-card>
+<div fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+    <mat-card (click)="showDetail(character)" class="card-characters" fxFlex="25%" *ngFor="let character of characters" >
+        <img matCardImage [src]="getUrlImg(character)">
+        <mat-card-header>
+            <mat-card-title>{{character.name}}</mat-card-title>
+            <mat-card-subtitle>{{character.description}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>

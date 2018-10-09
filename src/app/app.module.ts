@@ -15,12 +15,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ApiService } from './services/api.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NavbarComponent } from './laytouts/navbar/navbar.component';
 import { DetailsComponent } from './views/details/details.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ROUTES } from './app.routes';
-import { BlankComponent } from './laytouts/blank/blank.component';
 import { HomeComponent } from './views/home/home.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+import { BlankComponent } from './layout/blank/blank.component';
 
 
 @NgModule({

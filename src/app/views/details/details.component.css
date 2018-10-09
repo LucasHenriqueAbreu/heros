@@ -31,8 +31,23 @@
 /* Lines of code below are just here to get a better aspect but optionnal */
 section {
   height: 1600px;
+  background-color: #ecebf1;
+}
+
+.content {
+  padding: 5px;
 }
 
 .toolbar-tools {
   margin-top: 10px;
+}
+
+mat-card {
+  margin-top: 10px !important;
+}
+
+.description {
+  color: rgba(0,0,0,.54);
+  padding: 0 20px;
+  background-color: #fff;
 }
