@@ -11,7 +11,7 @@ npm install
 
 ## Server de desenvolvimento
 
-Execute `ng serve`  para um servidor dev. Navegue até `http://localhost:4200/`. aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
+Execute `ng serve`  para um servidor dev. Navegue até `http://localhost:4200/`. aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos.
 
 ## Gerador de código
 
