@@ -1,27 +1,41 @@
 # Heros
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 6.1.2.
 
-## Development server
+Para ter em sua máquina clone o projeto e instale as dependências:
+```bash
+git clone https://github.com/LucasHenriqueAbreu/heros.git
+cd heros
+npm install
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Server de desenvolvimento
 
-## Code scaffolding
+Execute `ng serve`  para um servidor dev. Navegue até `http://localhost:4200/`. aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Gerador de código
+
+Execute `ng generate component component-name` para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Execute `ng build` para realizar o build do projeto. Os arquivos de build serão armazenados no diretório `dist/heros`. Use a flag `--prod` para fazer o build em produção.
 
-## Running unit tests
+## GitHub Pages
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para atualizar o projeto no basta executar os seguintes comandos na pasta raíz do projeto:
+```bash
+ng build --prod --base-href /heros/
+ngh --dir dist/heros
+```
+## Rodando testes unitáios
 
-## Running end-to-end tests
+Execute `ng test` para rodar os testes unitários via [Karma](https://karma-runner.github.io).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Rodando testes end-to-end
 
-## Further help
+Execute `ng e2e` para rodar os testes end-to-end via [Protractor](http://www.protractortest.org/).
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Ajuda
+
+Para obter mais ajuda sobre o uso do CLI Angular `ng help` ou vá conferir o [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
