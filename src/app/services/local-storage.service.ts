@@ -58,6 +58,9 @@ export class LocalStorageService {
    * @param query 
    */
   findByName(query: string): Character[] {
-    return this.getAll().filter((character) => character.name.includes('query'));
+    if (query.length === 0) return this.getAll();
+    return this.getAll().filter((character) => {
+      if (character.name.toLowerCase().includes(query.toLocaleLowerCase())) return character;
+    });
   }
 }

@@ -2,3 +2,10 @@
     cursor: pointer;
     margin-top: 10px !important;
 }
+
+.spinner {
+    position: absolute;
+    z-index: 99999;
+    margin: 0 auto;
+    width: 100%;
+}

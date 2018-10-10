@@ -1,9 +1,11 @@
-<mat-spinner *ngIf="loading"></mat-spinner>
-<div *ngIf="!loading">
+<div *ngIf="loading" class="spinner" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div>
     <app-input-search [actionsearch]="searchCharacter.bind(this)" placeholder="Search"></app-input-search>
-    <div class="list-scroll" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px"
-        data-infinite-scroll debounce [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="2" (scrolled)="onScrollDown()"
-        [scrollWindow]="false">
+    <div class="list-scroll" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px" data-infinite-scroll
+        debounce [infiniteScrollDistance]="2" [infiniteScrollUpDistance]="2" (scrolled)="onScrollDown()" [scrollWindow]="false">
         <mat-card (click)="showDetail(character)" class="card-characters" fxFlex="25%" *ngFor="let character of characters">
             <img matCardImage [src]="getUrlImg(character)">
             <mat-card-header>

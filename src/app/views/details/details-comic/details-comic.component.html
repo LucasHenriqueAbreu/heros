@@ -1,12 +1,20 @@
-<!-- <div>
-    <img matCardImage [src]="getUrlImg(comic.thumbnail)">
+<div fxLayout="row">
+  <div fxHide.xs="true">
+    <img class="mainImgComic" [src]="getUrlImg(comic.thumbnail)">
+  </div>
+  <div>
+    <h1 matDialogTitle>{{comic.title}}</h1>
+    <p class="subtitle">{{comic.description}}</p>
+  </div>
+  <span fxFlex></span>
+  <button mat-icon-button mat-dialog-close color="warn">
+    <mat-icon color="warn" (click)="onNoClick()">close</mat-icon>
+  </button>
 </div>
-<h3 mat-dialog-title>{{comic.title}}</h3>
-<p mat-dialog-subtitle>{{comic.description}}</p>
-<div mat-dialog-content>
+<mat-dialog-content>
   <mat-tab-group>
     <mat-tab label="Characters">
-      <mat-list>
+      <mat-list class="list-scroll">
         <h3 mat-subheader>A list the characters that appear in this comic.</h3>
         <mat-list-item *ngFor="let character of comic.characters.items">
           <h4 mat-line matTooltip="The full name of the character">{{character.name}}</h4>
@@ -15,7 +23,7 @@
       </mat-list>
     </mat-tab>
     <mat-tab label="Creators">
-      <mat-list>
+      <mat-list class="list-scroll">
         <h3 mat-subheader>A list the creators associated with this comic.</h3>
         <mat-list-item *ngFor="let creator of comic.creators.items">
           <h4 mat-line matTooltip="The full name of the creator">{{creator.name}}</h4>
@@ -24,77 +32,27 @@
       </mat-list>
     </mat-tab>
     <mat-tab label="Prices">
-      <mat-list>
+      <mat-list class="list-scroll">
         <h3 mat-subheader>A list of prices for this comic.</h3>
         <mat-list-item *ngFor="let price of comic.prices">
           <h4 mat-line>{{price.type}}: {{price.price | currency}}</h4>
         </mat-list-item>
       </mat-list>
     </mat-tab>
-  </mat-tab-group>
-</div>
-<div mat-dialog-action fxLayout="row" fxLayoutAlign="end center">
-  <button mat-button color="primary" (click)="onNoClick()">CLOSE</button>
-</div> -->
-
-
-<mat-dialog-content fxLayout="row">
-  <div fxHide.xs="true">
-    <img class="mainImgComic" [src]="getUrlImg(comic.thumbnail)">
-  </div>
-  <div fxFlex>
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <div fxLayout="column">
-        <h3 class="title">{{comic.title}}</h3>
-        <p class="subtitle">{{comic.description}}</p>
+    <mat-tab label="Images">
+      <div style="padding: 10px" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+        <mat-card (click)="null" class="card-imgs" fxFlex="25%" *ngFor="let image of comic.images">
+          <img matCardImage [src]="getUrlImg(image)">
+        </mat-card>
       </div>
-      <span fxFlex></span>
-      <button mat-icon-button mat-dialog-close color="warn">
-        <mat-icon color="warn" (click)="onNoClick()">close</mat-icon>
-      </button>
-    </div>
-    <mat-tab-group>
-      <mat-tab label="Characters">
-        <mat-list class="list-scroll">
-          <h3 mat-subheader>A list the characters that appear in this comic.</h3>
-          <mat-list-item *ngFor="let character of comic.characters.items">
-            <h4 mat-line matTooltip="The full name of the character">{{character.name}}</h4>
-            <p mat-line matTooltip="The role of the creator in the parent entity">{{character.role}}</p>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-      <mat-tab label="Creators">
-        <mat-list class="list-scroll">
-          <h3 mat-subheader>A list the creators associated with this comic.</h3>
-          <mat-list-item *ngFor="let creator of comic.creators.items">
-            <h4 mat-line matTooltip="The full name of the creator">{{creator.name}}</h4>
-            <p mat-line matTooltip="The role of the creator">{{creator.role}}</p>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-      <mat-tab label="Prices">
-        <mat-list class="list-scroll">
-          <h3 mat-subheader>A list of prices for this comic.</h3>
-          <mat-list-item *ngFor="let price of comic.prices">
-            <h4 mat-line>{{price.type}}: {{price.price | currency}}</h4>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-      <mat-tab label="Images">
-        <div style="padding: 10px" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
-          <mat-card (click)="null" class="card-imgs" fxFlex="25%" *ngFor="let image of comic.images">
-            <img matCardImage [src]="getUrlImg(image)">
-          </mat-card>
-        </div>
-      </mat-tab>
-      <mat-tab label="Dates">
-        <mat-list class="list-scroll">
-          <h3 mat-subheader> A list of key dates for this comic.</h3>
-          <mat-list-item *ngFor="let date of comic.dates">
-            <h4 mat-line>{{date.type}}: {{date.date | date}}</h4>
-          </mat-list-item>
-        </mat-list>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
+    </mat-tab>
+    <mat-tab label="Dates">
+      <mat-list class="list-scroll">
+        <h3 mat-subheader> A list of key dates for this comic.</h3>
+        <mat-list-item *ngFor="let date of comic.dates">
+          <h4 mat-line>{{date.type}}: {{date.date | date}}</h4>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
 </mat-dialog-content>

@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
+/* html {
+    overflow: hidden;
+} */
 body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #ecebf1; }
 
 ::-webkit-scrollbar {
@@ -35,6 +38,6 @@ body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #ecebf1; 
 }
 
 .list-scroll {
-    max-height: 60vh;
+    max-height: 80vh !important;
     overflow: auto;
 }

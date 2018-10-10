@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatDialog, MatToolbar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Story } from '../../models/story';
 import { ApiService } from '../../services/api.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { DetailsComicComponent } from './details-comic/details-comic.component';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -28,7 +29,7 @@ export class DetailsComponent implements OnInit {
   pathImg: string = '';
 
   @ViewChild('pageheader') header: ElementRef;
-  @ViewChild('headertitle') title: ElementRef;
+  // @ViewChild('headertitle') title: ElementRef;
   @ViewChild('headerpicture') picture: ElementRef;
   @ViewChild('mainfab') fab: ElementRef;
   @ViewChild('toolbar') toolbar: MatToolbar;
@@ -39,6 +40,7 @@ export class DetailsComponent implements OnInit {
   titleZoom = 1.5;
   primaryColor = [63, 81, 181];
   showMainFab = true;
+  expandPhoto = false;
 
 
   constructor(
@@ -47,13 +49,13 @@ export class DetailsComponent implements OnInit {
     private apiService: ApiService,
     public dialog: MatDialog,
     public localStorageService: LocalStorageService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    @Inject(DOCUMENT) private document: Document
   ) { }
 
   ngOnInit(): void {
     this.baseDimensions = this.header.nativeElement.getBoundingClientRect();
     this.getCharacterData(this.route.snapshot.paramMap.get('id'));
-    this.styleInit();
     this.handleStyle(this.baseDimensions);
   }
 
@@ -83,31 +85,17 @@ export class DetailsComponent implements OnInit {
 
   }
 
-  /**
-   * Seta o style inicial para o titulo (nome do character)
-   */
-  styleInit(): void {
-    this.title.nativeElement.style.paddingLeft = '16px';
-    this.title.nativeElement.style.position = 'relative';
-    this.title.nativeElement.style.transformOrigin = '24px';
-  }
-
   handleStyle(dim): void {
     this.fab.nativeElement.style.top = (dim.height - this.legacyFabMid) + 'px';
     if ((dim.bottom - this.baseDimensions.top) > this.legacyToolbarH) {
-      this.title.nativeElement.style.top = ((dim.bottom - this.baseDimensions.top) - this.legacyToolbarH) + 'px';
       this.toolbar._elementRef.nativeElement.style.height = (dim.bottom - this.baseDimensions.top) + 'px';
-      this.title.nativeElement.style.transform = 'scale(' + ((this.titleZoom - 1) * this.ratio(dim) + 1) + ',' + ((this.titleZoom - 1) * this.ratio(dim) + 1) + ')';
     } else {
-      this.title.nativeElement.style.top = '5px';
       this.toolbar._elementRef.nativeElement.style.height = this.legacyToolbarH + 'px';
-      this.title.nativeElement.style.transform = 'scale(1,1)';
     }
     if ((dim.bottom - this.baseDimensions.top) < this.legacyToolbarH * 2 && !this.hasClass(this.fab, 'hide')) {
       this.showMainFab = false;
     }
     if ((dim.bottom - this.baseDimensions.top) > this.legacyToolbarH * 2 && this.hasClass(this.fab, 'hide')) {
-      // this.renderer.removeClass(this.fab, 'hide');
       this.showMainFab = true;
     }
     this.toolbar._elementRef.nativeElement.style.backgroundColor = 'rgba(' + this.primaryColor[0] + ',' + this.primaryColor[1] + ',' + this.primaryColor[2] + ',' + (1 - this.ratio(dim)) + ')';
@@ -129,10 +117,14 @@ export class DetailsComponent implements OnInit {
    */
   @HostListener("window:resize", ["$event"])
   resize(event: UIEvent): void {
+    this.scrollTop();
     this.baseDimensions = this.header.nativeElement.getBoundingClientRect();
     this.handleStyle(this.baseDimensions);
   }
 
+  scrollTop() {
+    this.document.body.scrollTop = this.document.documentElement.scrollTop = 0;
+  }
   /**
    * Listener para o evento de scroll da tela. Quando o scroll é realizado pelo usuário 
    * realiza o recalculo dos styles da tela.

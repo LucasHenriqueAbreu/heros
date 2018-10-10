@@ -63,6 +63,5 @@ mat-sidenav {
   right: 0;
   bottom: 0;
   overflow: auto;
-  height: 100vh;
   padding: 0px 5px 75px 5px;
 }

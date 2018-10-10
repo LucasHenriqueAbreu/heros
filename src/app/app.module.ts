@@ -16,6 +16,7 @@ import {
   MatTooltipModule,
   MatSnackBarModule,
   MatProgressSpinnerModule,
+  MatExpansionModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -73,6 +74,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     ConfirmDialogModule,
     MatProgressSpinnerModule,
     InfiniteScrollModule,
+    MatExpansionModule,
 
     ROUTES,
 

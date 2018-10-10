@@ -26,7 +26,7 @@ Execute `ng build` para realizar o build do projeto. Os arquivos de build serão
 Para atualizar o projeto no basta executar os seguintes comandos na pasta raíz do projeto:
 ```bash
 ng build --prod --base-href /heros/
-ngh --dir dist/heros
+npx ngh --dir dist/heros
 ```
 ## Rodando testes unitáios
 
