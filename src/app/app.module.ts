@@ -8,26 +8,28 @@ import {
   MatDialog,
   MatDialogModule,
   MatDividerModule,
+  MatExpansionModule,
   MatIconModule,
   MatListModule,
+  MatProgressSpinnerModule,
   MatSidenavModule,
+  MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatExpansionModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceWorkerModule, SwUpdate } from '@angular/service-worker';
+import { SwUpdate } from '@angular/service-worker';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { ROUTES } from './app.routes';
 import { BlankComponent } from './layout/blank/blank.component';
+import { ConfirmDialogModule } from './layout/confirm-dialog/confirm-dialog.module';
 import { InputSearchModule } from './layout/input-search/input-search.module';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { NotificationService } from './layout/notification/notification.service';
 import { ApiService } from './services/api.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { DetailsComicComponent } from './views/details/details-comic/details-comic.component';
@@ -35,9 +37,6 @@ import { DetailsComponent } from './views/details/details.component';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
-import { NotificationService } from './layout/notification/notification.service';
-import { ConfirmDialogModule } from './layout/confirm-dialog/confirm-dialog.module';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -76,9 +75,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     InfiniteScrollModule,
     MatExpansionModule,
 
-    ROUTES,
+    ROUTES
 
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
     DetailsComicComponent
