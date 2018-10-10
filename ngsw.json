@@ -9,10 +9,10 @@
       "urls": [
         "/heros/favicon.ico",
         "/heros/index.html",
-        "/heros/main.c54abc560483920ff11b.js",
+        "/heros/main.db5fab70b62bc63e8925.js",
         "/heros/polyfills.7a0e6866a34e280f48e7.js",
         "/heros/runtime.a66f828dca56eeb90e02.js",
-        "/heros/styles.60ac13c1408123b8afd0.css"
+        "/heros/styles.abc5055471fc5d3eadb2.css"
       ],
       "patterns": []
     },
@@ -46,11 +46,11 @@
     "/heros/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/heros/assets/img/background.png": "0fe81b07efb0636d17e2e6ba25dfb9e6590f5e9d",
     "/heros/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/heros/index.html": "d60c762d875f1832d0059b420a33d34bd60460ba",
-    "/heros/main.c54abc560483920ff11b.js": "55c949ee01381351f1fcff855b3d71581f05512c",
+    "/heros/index.html": "8eea8bf6dcfe75d20f4bdf8d77341d993196d702",
+    "/heros/main.db5fab70b62bc63e8925.js": "9fcc6e2f584e3688dd7ab3b2a0016319b87a9284",
     "/heros/polyfills.7a0e6866a34e280f48e7.js": "9f0b8341c0a0caec1581da2f255eb5dbb8e12303",
     "/heros/runtime.a66f828dca56eeb90e02.js": "078e320cc6fdaf355836c3b1c52b059cdd33fc7e",
-    "/heros/styles.60ac13c1408123b8afd0.css": "6694b061ea2823d117a69594d0cb15204b9710a6"
+    "/heros/styles.abc5055471fc5d3eadb2.css": "e86b7cfd0e904b360b419315b7ba1c83dff93abd"
   },
   "navigationUrls": [
     {
