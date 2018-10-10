@@ -1,3 +1,49 @@
-.full-screen-modal .mat-dialog-container {
-    max-width: none;
-  }
+.imgComic {
+    height: 150px;
+    width: 150px;
+}
+.mat-tab-body-content {
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+img.mainImgComic {
+    max-width: 18vw;
+    margin-right: 20px;
+}
+
+h3.nomeComic {
+    color: #4c4b4b;
+}
+
+.valorTop {
+    color: #3f51b5;
+    font-weight: 600;
+    font-size: 1.7em;
+}
+
+.categoriaTop {
+    color: #fff;
+    font-weight: 400;
+    background-color: #f44336;
+    border-radius: 5px;
+    margin: 0.1em;
+    padding: 0.4em;
+    outline: 0;
+}
+
+.list-scroll {
+    max-height: 60vh;
+    overflow: auto;
+}
+
+mat-dialog-content.mat-dialog-content {
+    max-height: 95vh;
+}
+
+.card-imgs {
+    margin-top: 10px;
+}

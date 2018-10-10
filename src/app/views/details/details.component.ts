@@ -1,12 +1,17 @@
-import { Component, OnInit, ElementRef, ViewChild, Renderer2, HostListener, Input } from '@angular/core';
-import { MatToolbar, MatDialog } from '@angular/material';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatToolbar } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { NotificationService } from '../../layout/notification/notification.service';
 import { Character } from '../../models/character';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { Image } from '../../models/image';
 import { Comic } from '../../models/comic';
-import { DetailsComicComponent } from './details-comic/details-comic.component';
+import { Event } from '../../models/event';
+import { Image } from '../../models/image';
+import { Serie } from '../../models/serie';
+import { Story } from '../../models/story';
+import { ApiService } from '../../services/api.service';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { DetailsComicComponent } from './details-comic/details-comic.component';
 
 @Component({
   selector: 'app-details',
@@ -17,14 +22,17 @@ export class DetailsComponent implements OnInit {
 
   character: Character = new Character();
   comics: Comic[] = [];
+  events: Event[] = [];
+  series: Serie[] = [];
+  stories: Story[] = [];
   pathImg: string = '';
 
-  @ViewChild('pageheader') header: ElementRef;  
+  @ViewChild('pageheader') header: ElementRef;
   @ViewChild('headertitle') title: ElementRef;
   @ViewChild('headerpicture') picture: ElementRef;
   @ViewChild('mainfab') fab: ElementRef;
   @ViewChild('toolbar') toolbar: MatToolbar;
-  
+
   baseDimensions: any
   legacyToolbarH = 64;
   legacyFabMid = 56 / 2;
@@ -38,8 +46,8 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     public dialog: MatDialog,
-    public localStorageService: LocalStorageService
-
+    public localStorageService: LocalStorageService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +69,18 @@ export class DetailsComponent implements OnInit {
 
     this.apiService.getComics(id).subscribe(res => {
       this.comics = res.data.results;
-    })
+    });
+
+    this.apiService.getEvents(id).subscribe(res => {
+      this.events = res.data.results;
+    });
+    this.apiService.getSeries(id).subscribe(res => {
+      this.series = res.data.results;
+    });
+    this.apiService.getStories(id).subscribe(res => {
+      this.stories = res.data.results;
+    });
+
   }
 
   /**
@@ -142,23 +161,57 @@ export class DetailsComponent implements OnInit {
   }
 
   /**
-   * Cria uma url para renderizar a imagem do character
-   * @param character 
+   * Cria uma url para renderizar a imagem do
+   * @param thumbnail 
    */
   getUrlImg(thumbnail: Image): string {
-    return `${thumbnail.path}.${thumbnail.extension}`;
+    return thumbnail ? `${thumbnail.path}.${thumbnail.extension}` : '';
   }
 
   /**
    * Abre o modal com mais detalhes sobre o comic.
    * @param comic 
    */
-  openDetails(comic: Comic) {
+  openDetailsComic(comic: Comic) {
     this.dialog.open(DetailsComicComponent, {
-      panelClass: 'full-screen-modal',
+      panelClass: 'my-full-screen-dialog',
       data: comic
     });
   }
+
+  /**
+  * Abre o modal com mais detalhes sobre o event.
+  * @param event 
+  */
+  openDetailsEvent(event: Event) {
+    this.dialog.open(DetailsComicComponent, {
+      panelClass: 'my-full-screen-dialog',
+      data: event
+    });
+  }
+
+  /**
+  * Abre o modal com mais detalhes sobre o serie.
+  * @param serie 
+  */
+  openDetailsSerie(serie: Serie) {
+    this.dialog.open(DetailsComicComponent, {
+      panelClass: 'my-full-screen-dialog',
+      data: serie
+    });
+  }
+
+  /**
+  * Abre o modal com mais detalhes sobre o story.
+  * @param story 
+  */
+  openDetailsStory(story: Story) {
+    this.dialog.open(DetailsComicComponent, {
+      panelClass: 'my-full-screen-dialog',
+      data: story
+    });
+  }
+
 
   /**
    * Salva na localStorage os heróis favoritos.
@@ -166,6 +219,7 @@ export class DetailsComponent implements OnInit {
    */
   makeBookmark(character: Character) {
     this.localStorageService.create(character);
+    this.notificationService.showMessage("Successfully added to favorites", "OK", 5000);
   }
 
 }

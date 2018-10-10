@@ -1,5 +1,6 @@
 .card-favorites {
     padding: 0px;
+    margin-top: 10px !important;
 }
 .card-favorites img {
     height: 200px;
@@ -11,4 +12,12 @@
 
 .card-actions {
     padding: 8px 0;
+}
+
+mat-card-subtitle.mat-card-subtitle {
+    height: 80px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
 }

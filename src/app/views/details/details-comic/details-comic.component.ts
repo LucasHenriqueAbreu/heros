@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Comic } from '../../../models/comic';
+import { Image } from '../../../models/image';
 
 @Component({
   selector: 'app-details-comic',
@@ -17,6 +18,14 @@ export class DetailsComicComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+   /**
+   * Cria uma url para renderizar a imagem do
+   * @param thumbnail 
+   */
+  getUrlImg(thumbnail: Image): string {
+    return `${thumbnail.path}.${thumbnail.extension}`;
   }
 
 }

@@ -14,6 +14,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatSnackBarModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +33,8 @@ import { DetailsComponent } from './views/details/details.component';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { NotificationService } from './layout/notification/notification.service';
+import { ConfirmDialogModule } from './layout/confirm-dialog/confirm-dialog.module';
 
 
 @NgModule({
@@ -63,6 +66,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
     MatTooltipModule,
     InputSearchModule,
     MatTabsModule,
+    MatSnackBarModule,
+    ConfirmDialogModule,
 
     ROUTES,
 
@@ -75,7 +80,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
     ApiService,
     MatDialog,
     LocalStorageService,
-    SwUpdate
+    SwUpdate,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })

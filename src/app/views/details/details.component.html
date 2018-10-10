@@ -16,7 +16,7 @@
   </mat-toolbar>
   <div #mainfab class="main-fab">
     <!-- <button mat-icon-button><mat-icon>star</mat-icon></button> -->
-    <button matTooltip="Make bookmark" mat-fab (cick)="makeBookmark(character)">
+    <button matTooltip="Make bookmark" mat-fab (click)="makeBookmark(character)">
       <mat-icon>star</mat-icon>
     </button>
   </div>
@@ -24,21 +24,11 @@
 <br />
 <br />
 <section id="page-section">
-  <div class="content" fxLayout="column">
-    <!-- <div>
-      <p class="description">{{character.description}}</p>
-      <div>
-
-      </div>
-    </div> -->
-    <mat-card>
-      <mat-card-header>
-        <mat-card-subtitle>{{character.description}}</mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
+  <!-- <div class="content" fxLayout="column">
+    <p class="description">{{character.description}}</p>
     <section fxLayout="column">
       <p class="title-section">Comics</p>
-      <div fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+      <div class="scroll-list" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
         <mat-card fxFlex="25%" *ngFor="let comic of comics">
           <img matCardImage [src]="getUrlImg(comic.thumbnail)">
           <mat-card-header>
@@ -50,37 +40,64 @@
           </mat-card-footer>
         </mat-card>
       </div>
-      <button mat-button color="accent" (click)="null">Load more</button>
     </section>
-    <!-- <mat-card>
-      <mat-card-header>
-        <mat-card-title>Comics</mat-card-title>
-        <mat-card-subtitle>{{character.name}} has {{character.comics.returned}} comics</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="10px">
-        <div class="comic" *ngFor="let comic of character.comics.items" fxFlex="25%">
-          <span>{{comic.name}}</span>
-          <img [src]="comic.resourceURI">
-        </div>
-      </mat-card-content>
-    </mat-card> -->
-
-    <!-- <mat-card>
-          <mat-card-header>
-              <mat-card-title>Title</mat-card-title>
-              <mat-card-subtitle>Subtitle</mat-card-subtitle>
-          </mat-card-header>
-          <img matCardImage src="Card wide image source">
-          <mat-card-content>
-              Text content
-          </mat-card-content>
-          <mat-card-actions align="start">
-              <button mat-button (click)="onAction1">Action1</button>
-              
-          </mat-card-actions>
-          <mat-card-footer>
-              Footer
-          </mat-card-footer>
-      </mat-card> -->
-  </div>
+  </div> -->
+  <mat-list>
+    <p class="description">{{character.description}}</p>
+    <h3 mat-subheader>Comics</h3>
+    <div class="scroll-list" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-card fxFlex="25%" *ngFor="let comic of comics">
+        <img matCardImage [src]="getUrlImg(comic.thumbnail)">
+        <mat-card-header>
+          <mat-card-title>{{comic.title}}</mat-card-title>
+          <mat-card-subtitle>{{comic.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+          <button mat-button color="accent" (click)="openDetailsComic(comic)">Details</button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader>Events</h3>
+    <div class="scroll-list" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-card fxFlex="25%" *ngFor="let event of events">
+        <img matCardImage [src]="getUrlImg(event.thumbnail)">
+        <mat-card-header>
+          <mat-card-title>{{event.title}}</mat-card-title>
+          <mat-card-subtitle>{{event.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+          <button mat-button color="accent" (click)="openDetailsEvent(event)">Details</button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader>Series</h3>
+    <div class="scroll-list" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-card fxFlex="25%" *ngFor="let serie of series">
+        <img matCardImage [src]="getUrlImg(serie.thumbnail)">
+        <mat-card-header>
+          <mat-card-title>{{serie.title}}</mat-card-title>
+          <mat-card-subtitle>{{serie.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+          <button mat-button color="accent" (click)="openDetailsSerie(serie)">Details</button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <mat-divider></mat-divider>
+    <h3 mat-subheader>Stories</h3>
+    <div class="scroll-list" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+      <mat-card fxFlex="25%" *ngFor="let story of stories">
+        <img matCardImage [src]="getUrlImg(story.thumbnail)">
+        <mat-card-header>
+          <mat-card-title>{{story.title}}</mat-card-title>
+          <mat-card-subtitle>{{story.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+          <button mat-button color="accent" (click)="openDetailsStory(story)">Details</button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </mat-list>
 </section>

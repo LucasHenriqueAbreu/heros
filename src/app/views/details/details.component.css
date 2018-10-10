@@ -36,7 +36,6 @@ section {
 
 .content {
   padding: 5px;
-  margin-top: -50px;
 }
 
 .toolbar-tools {
@@ -48,14 +47,25 @@ mat-card {
 }
 
 .description {
-  color: rgba(0,0,0,.54);
+  color: #757575;
   padding: 0 20px;
-  background-color: #fff;
 }
 
 .title-section {
   color: #757575;
   font-size: 1.2em;
   margin-left: 10px;
+}
 
+.scroll-list {
+  max-height: 100vh;
+  overflow: auto;
+}
+
+mat-card-subtitle.mat-card-subtitle {
+  height: 80px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; 
 }

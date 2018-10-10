@@ -37,4 +37,14 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/comics?apikey=${this.apiKey}`);
   }
 
+  getEvents(id: string): any {
+    return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/events?apikey=${this.apiKey}`);
+  }
+  getSeries(id: string): any {
+    return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/series?apikey=${this.apiKey}`);
+  }
+  getStories(id: string): any {
+    return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/stories?apikey=${this.apiKey}`);
+  }
+
 }

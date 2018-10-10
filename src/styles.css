@@ -31,4 +31,5 @@ body { margin: 0; font-family: 'Roboto', sans-serif; background-color: #ecebf1; 
     left: 0;
     position: fixed;
     top: 0;
+    max-height: 100vh !important;
 }

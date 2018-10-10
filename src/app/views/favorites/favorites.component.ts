@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { Character } from '../../models/character';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from '../../layout/confirm-dialog/confirm-dialog.service';
+import { NotificationService } from '../../layout/notification/notification.service';
 
 @Component({
   selector: 'app-favorites',
@@ -13,8 +15,10 @@ export class FavoritesComponent implements OnInit {
   characters: Character[] = [];
 
   constructor(
-    public localStorageService: LocalStorageService,
-    private router: Router
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private confirmDialogService: ConfirmDialogService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -42,7 +46,12 @@ export class FavoritesComponent implements OnInit {
    * @param character 
    */
   delete(character: Character) {
-    this.localStorageService.delete(character);
+    this.confirmDialogService.confirm(`Delete ${character.name}`, `Are you sure you want to remove ${character.name} from your bookmarks? `).subscribe(res => {
+      if (res){
+        this.localStorageService.delete(character);
+        this.notificationService.showMessage("Successfully removed from bookmarks", "OK", 5000);
+      }
+    })
   }
 
   /**

@@ -1,4 +1,4 @@
-export class Series {
+export class Serie {
     available: number;
     returned: number;
     collectionURI: string;

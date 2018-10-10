@@ -1,6 +1,6 @@
-<div style="padding: 50px;">
-  <app-input-search [actionsearch]="searchCharacter.bind(this)"  placeholder="Search"></app-input-search>
-  <mat-card fxLayout="row" class="card-favorites"  class="card-characters" fxFlex="25%" *ngFor="let character of characters">
+<app-input-search [actionsearch]="searchCharacter.bind(this)" placeholder="Search"></app-input-search>
+<div fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
+  <mat-card fxLayout="row" class="card-favorites" fxFlex="40%" *ngFor="let character of characters">
     <img [src]="getUrlImg(character)">
     <div fxFlex fxLayout="column">
       <div class="card-content">
