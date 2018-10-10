@@ -26,8 +26,8 @@ export class Comic {
     prices: any[];
     thumbnail: Image;
     images: any[];
-    creators: any[];
-    characters: any[];
-    stories: any[];
-    events: any[];
+    creators: any;
+    characters: any;
+    stories: any;
+    events: any;
 }

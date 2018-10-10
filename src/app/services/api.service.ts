@@ -7,18 +7,30 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  
+
   private apiUrl = environment.api_url;
   private apiKey = environment.public_key;
-  
-  
+
+
   constructor(private httpClient: HttpClient) { }
-  
+
 	/**
-   * Pesquisa todos os itens.
-	 */
-  findAll(): Observable<any> {
-    return this.httpClient.get<any>(`${this.apiUrl}characters?apikey=${this.apiKey}`);
+   * Pesquisa todos os itens com uma paginação
+   * @param limit 
+   * @param offset 
+   */
+  findAll(limit: number, offset: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}characters?limit=${limit}&offset=${offset}&apikey=${this.apiKey}`);
+  }
+
+  /**
+   * Pesquisa todos os itens que contém o nome passado no parâmetro query com uma paginação
+   * @param limit 
+   * @param offset 
+   * @param query 
+   */
+  findByName(limit: number, offset: number, query: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}characters?nameStartsWith=${query}&limit=${limit}&offset=${offset}&apikey=${this.apiKey}`);
   }
 
   /**

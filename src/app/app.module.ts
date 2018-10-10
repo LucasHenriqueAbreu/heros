@@ -15,6 +15,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatSnackBarModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +36,8 @@ import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { NotificationService } from './layout/notification/notification.service';
 import { ConfirmDialogModule } from './layout/confirm-dialog/confirm-dialog.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 
 @NgModule({
@@ -68,6 +71,8 @@ import { ConfirmDialogModule } from './layout/confirm-dialog/confirm-dialog.modu
     MatTabsModule,
     MatSnackBarModule,
     ConfirmDialogModule,
+    MatProgressSpinnerModule,
+    InfiniteScrollModule,
 
     ROUTES,
 
