@@ -42,6 +42,8 @@ export class DetailsComponent implements OnInit {
   showMainFab = true;
   expandPhoto = false;
 
+  loadingComic = false;
+
 
   constructor(
     private router: Router,
@@ -69,7 +71,9 @@ export class DetailsComponent implements OnInit {
       this.pathImg = this.getUrlImg(this.character.thumbnail);
     }, err => { console.log(err) });
 
+    this.loadingComic = true;
     this.apiService.getComics(id).subscribe(res => {
+      this.loadingComic = false;
       this.comics = res.data.results;
     });
 

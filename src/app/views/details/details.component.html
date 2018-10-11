@@ -65,6 +65,9 @@
           All the events of the character
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <div *ngIf="loadingComic" fxLayout="row" fxLayoutAlign="center center">
+          <mat-spinner></mat-spinner>
+      </div>
       <p *ngIf="events.length == 0">No events for this character</p>
       <div fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayout.xs="column" fxLayoutGap="10px">
         <mat-card fxFlex="25%" *ngFor="let event of events">
