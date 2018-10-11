@@ -1,0 +1,16 @@
+<div fxLayout="row">
+    <span fxFlex></span>
+    <button mat-icon-button mat-dialog-close color="warn" (click)="onNoClick()">
+        <mat-icon color="warn">close</mat-icon>
+    </button>
+</div>
+<div *ngIf="loading" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+</div>
+<mat-card *ngIf="!loading">
+    <img matCardImage [src]="getUrlImg(creator.thumbnail)">
+    <mat-card-header>
+        <mat-card-title>{{creator.fullName}}</mat-card-title>
+        <mat-card-subtitle>{{creator.suffix}}</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>

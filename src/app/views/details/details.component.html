@@ -49,8 +49,8 @@
             <mat-card-title>{{comic.title}}</mat-card-title>
             <mat-card-subtitle>{{comic.description}}</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
-            <button mat-button color="accent" (click)="openDetailsComic(comic)">Details</button>
+          <mat-card-footer fxLayout="row" fxLayoutAlign="end">
+            <button mat-button color="accent" (click)="openDetails(comic)">Details</button>
           </mat-card-footer>
         </mat-card>
       </div>
@@ -73,8 +73,8 @@
             <mat-card-title>{{event.title}}</mat-card-title>
             <mat-card-subtitle>{{event.description}}</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
-            <button mat-button color="accent" (click)="openDetailsEvent(event)">Details</button>
+          <mat-card-footer fxLayout="row" fxLayoutAlign="end">
+            <button mat-button color="accent" (click)="openDetails(event)">Details</button>
           </mat-card-footer>
         </mat-card>
       </div>
@@ -97,8 +97,8 @@
             <mat-card-title>{{serie.title}}</mat-card-title>
             <mat-card-subtitle>{{serie.description}}</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
-            <button mat-button color="accent" (click)="openDetailsSerie(serie)">Details</button>
+          <mat-card-footer fxLayout="row" fxLayoutAlign="end">
+            <button mat-button color="accent" (click)="openDetails(serie)">Details</button>
           </mat-card-footer>
         </mat-card>
       </div>
@@ -121,8 +121,8 @@
             <mat-card-title>{{story.title}}</mat-card-title>
             <mat-card-subtitle>{{story.description}}</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
-            <button mat-button color="accent" (click)="openDetailsStory(story)">Details</button>
+          <mat-card-footer fxLayout="row" fxLayoutAlign="end">
+            <button mat-button color="accent" (click)="openDetails(story)">Details</button>
           </mat-card-footer>
         </mat-card>
       </div>

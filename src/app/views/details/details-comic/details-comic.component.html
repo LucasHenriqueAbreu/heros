@@ -7,8 +7,8 @@
     <p class="subtitle">{{comic.description}}</p>
   </div>
   <span fxFlex></span>
-  <button mat-icon-button mat-dialog-close color="warn">
-    <mat-icon color="warn" (click)="onNoClick()">close</mat-icon>
+  <button mat-icon-button mat-dialog-close color="warn" (click)="onNoClick()">
+    <mat-icon color="warn" >close</mat-icon>
   </button>
 </div>
 <mat-dialog-content>
@@ -25,7 +25,7 @@
     <mat-tab label="Creators">
       <mat-list class="list-scroll">
         <h3 mat-subheader>A list the creators associated with this comic.</h3>
-        <mat-list-item *ngFor="let creator of comic.creators.items">
+        <mat-list-item style="cursor: pointer;" *ngFor="let creator of comic.creators.items" (click)="openDetailsCreator(creator.name)">
           <h4 mat-line matTooltip="The full name of the creator">{{creator.name}}</h4>
           <p mat-line matTooltip="The role of the creator">{{creator.role}}</p>
         </mat-list-item>

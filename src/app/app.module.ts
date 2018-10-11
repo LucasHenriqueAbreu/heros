@@ -37,6 +37,7 @@ import { DetailsComponent } from './views/details/details.component';
 import { FavoritesComponent } from './views/favorites/favorites.component';
 import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { DetailsCreatorComponent } from './views/details/details-creator/details-creator.component';
 
 
 
@@ -49,7 +50,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
     BlankComponent,
     HomeComponent,
     DetailsComicComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    DetailsCreatorComponent
   ],
   imports: [
     HttpClientModule,
@@ -79,7 +81,8 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 
   ],
   entryComponents: [
-    DetailsComicComponent
+    DetailsComicComponent,
+    DetailsCreatorComponent
   ],
   providers: [
     ApiService,

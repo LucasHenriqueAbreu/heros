@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { Comic } from '../../../models/comic';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+
 import { Image } from '../../../models/image';
+import { DetailsCreatorComponent } from '../details-creator/details-creator.component';
 
 @Component({
   selector: 'app-details-comic',
@@ -13,7 +14,8 @@ export class DetailsComicComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DetailsComicComponent>,
-    @Inject(MAT_DIALOG_DATA) public comic: Comic
+    @Inject(MAT_DIALOG_DATA) public comic: any,
+    public dialog: MatDialog,
   ) { }
 
   onNoClick(): void {
@@ -25,7 +27,13 @@ export class DetailsComicComponent {
    * @param thumbnail 
    */
   getUrlImg(thumbnail: Image): string {
-    return `${thumbnail.path}.${thumbnail.extension}`;
+    return thumbnail ? `${thumbnail.path}.${thumbnail.extension}` : '';
   }
 
+  openDetailsCreator(id: any) {
+    this.dialog.open(DetailsCreatorComponent, {
+      panelClass: 'my-full-screen-dialog',
+      data: id
+    });
+  }
 }

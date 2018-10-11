@@ -37,7 +37,7 @@ export class ApiService {
    * Pesquisa um character na api da marvel.
    * @param id 
    */
-  findById(id: string): any {
+  findById(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}characters/${id}?apikey=${this.apiKey}`);
   }
 
@@ -45,18 +45,26 @@ export class ApiService {
    * Busca as HQs com mais detalhes para um char.
    * @param id 
    */
-  getComics(id: string): any {
+  getComics(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/comics?apikey=${this.apiKey}`);
   }
 
-  getEvents(id: string): any {
+  getEvents(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/events?apikey=${this.apiKey}`);
   }
-  getSeries(id: string): any {
+  getSeries(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/series?apikey=${this.apiKey}`);
   }
-  getStories(id: string): any {
+  getStories(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.apiUrl}characters/${id}/stories?apikey=${this.apiKey}`);
+  }
+
+  /**
+   * Busca um creator por seu id.
+   * @param id 
+   */
+  findCreatorByName(name: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}creators?nameStartsWith=${name}&apikey=${this.apiKey}`);
   }
 
 }

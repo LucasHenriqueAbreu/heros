@@ -164,46 +164,12 @@ export class DetailsComponent implements OnInit {
    * Abre o modal com mais detalhes sobre o comic.
    * @param comic 
    */
-  openDetailsComic(comic: Comic) {
+  openDetails(data: any) {
     this.dialog.open(DetailsComicComponent, {
       panelClass: 'my-full-screen-dialog',
-      data: comic
+      data: data
     });
   }
-
-  /**
-  * Abre o modal com mais detalhes sobre o event.
-  * @param event 
-  */
-  openDetailsEvent(event: Event) {
-    this.dialog.open(DetailsComicComponent, {
-      panelClass: 'my-full-screen-dialog',
-      data: event
-    });
-  }
-
-  /**
-  * Abre o modal com mais detalhes sobre o serie.
-  * @param serie 
-  */
-  openDetailsSerie(serie: Serie) {
-    this.dialog.open(DetailsComicComponent, {
-      panelClass: 'my-full-screen-dialog',
-      data: serie
-    });
-  }
-
-  /**
-  * Abre o modal com mais detalhes sobre o story.
-  * @param story 
-  */
-  openDetailsStory(story: Story) {
-    this.dialog.open(DetailsComicComponent, {
-      panelClass: 'my-full-screen-dialog',
-      data: story
-    });
-  }
-
 
   /**
    * Salva na localStorage os heróis favoritos.
